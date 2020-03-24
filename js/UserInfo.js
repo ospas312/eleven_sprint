@@ -1,4 +1,4 @@
-class UserInfo {
+export class UserInfo {
   constructor(form, name, job, api) {
     this.avatar = document.querySelector('.user-info__photo');
     this.form = form;
@@ -10,7 +10,7 @@ class UserInfo {
     this.userAvatar = '';
   }
   loadUserInfo() {
-    api.getUserInfo()
+    this.api.getUserInfo()
       .then(user => {
         this.userName = user.name;
         this.userAbout = user.about;

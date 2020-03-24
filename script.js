@@ -1,3 +1,12 @@
+import "./pages/index.css";
+
+import {Card} from "./js/Card.js";
+import {Api} from "./js/Api.js";
+import {CardList} from "./js/CardList.js";
+import {Popup} from "./js/Popup.js";
+import {UserInfo} from "./js/UserInfo.js";
+import {FormValidator} from "./js/FormValidator.js";
+import {serverUrl} from "./js/config.js";
 
 const cardContainer = document.querySelector('.places-list');
 const infoName = document.querySelector('.user-info__name');
@@ -20,7 +29,7 @@ const errorMessage = {
 const card = new Card();
 
 const api = new Api({
-  baseUrl: 'https://praktikum.tk/cohort8',
+  baseUrl: serverUrl,
   headers: {
     authorization: 'fbaf30d0-2693-4ceb-9edd-835f22853e1d',
     'Content-Type': 'application/json'
@@ -62,34 +71,3 @@ document.addEventListener('click', popup.close);
 document.addEventListener('click', (event) => popup.open(event));
 cardContainer.addEventListener('click', card.likeIcon);
 cardContainer.addEventListener('click', card.remove);
-
-
-
-
-
-
-
-
-
-
-
-/*
-formEdit.addEventListener('submit', (event) => {
-  event.preventDefault();
-  api.sendUserInfo(infoName.textContent, infoJob.textContent)
-      .then(() =>{
-        infoName.textContent = formEdit.user.value;
-        infoJob.textContent = formEdit.job.value;
-        popup.close(event);
-      });
-
-});*/
-
-/*
-Promise.all([
-  api.getUserInfo(),
-])
-  .then(([user])=>{
-    userInfo.setUserInfo(user.name, user.about)
-    //userInfo.updateUserInfo()
-  })*/

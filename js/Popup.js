@@ -1,4 +1,4 @@
-class Popup {
+export class Popup {
   constructor(validation, userInfo, popupNew, popupEdit, resetForm, formEdit, formNew, popupPhoto) {
     this.validation = validation;
     this.userInfo = userInfo;
