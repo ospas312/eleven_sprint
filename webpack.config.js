@@ -8,25 +8,25 @@ const OptimizeCssAssetsPlugin = require('optimize-css-assets-webpack-plugin');
 const isDev = process.env.NODE_ENV === 'development';
 // создаем переменную для development-сборки
 
+
 module.exports = {
-    entry: { main: './script.js' },
+    entry: { main: './src/script.js' },
     output: {
         path: path.resolve(__dirname, 'dist'),
         filename: '[name].[chunkhash].js'
         },
         module: {
             rules: [
+                
                 {
                     test: /\.js$/,
                     exclude: /node_modules/,
-                    use: {
-                        loader: "babel-loader"
-                    }
+                    use: 
+                        {
+                            loader: "babel-loader"
+                        }
                 },
-                /*{
-                    test: /\.css$/,
-                    use:  [MiniCssExtractPlugin.loader, 'css-loader', 'postcss-loader']
-                },*/
+
                 {
                     test: /\.(png|jpg|gif|ico|svg)$/,
                     use: [
@@ -37,20 +37,24 @@ module.exports = {
                         },
                     ]
                 },
+
                 {
                     test: /\.css$/i,
-                    use: [
+                    use: 
+                        [
                             (isDev ? 'style-loader' : MiniCssExtractPlugin.loader),
                             'css-loader', 
                             'postcss-loader'
-                    ]
+                        ]
                 },
+
                 {
                     test: /\.(eot|ttf|woff|woff2)$/,
                     loader: 'file-loader?name=./vendor/[name].[ext]'
                 }       
             ]
         },
+        
         plugins: [ 
             new MiniCssExtractPlugin({filename: 'style.[contenthash].css'}),
             new OptimizeCssAssetsPlugin({
@@ -64,7 +68,7 @@ module.exports = {
             new HtmlWebpackPlugin({
                 inject: false,
                 hash: true,
-                template: './index.html',
+                template: './src/index.html',
                 filename: 'index.html'
             }),
             new WebpackMd5Hash(),

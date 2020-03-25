@@ -1,4 +1,4 @@
-import "./pages/index.css";
+import "./index.css";
 
 import {Card} from "./js/Card.js";
 import {Api} from "./js/Api.js";
@@ -44,7 +44,6 @@ function resetForm(form) {
 
 const formValidator = new FormValidator(errorMessage);
 const userInfo = new UserInfo(formEdit, infoName, infoJob, api);
-
 const popup = new Popup(formValidator, userInfo, popupNew, popupEdit,
   resetForm, formEdit, formNew, popupPhoto);
 const cardList = new CardList(cardContainer, api, card.create, popup.close);
